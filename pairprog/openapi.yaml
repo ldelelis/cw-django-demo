@@ -1,0 +1,153 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/v1/buckets/:
+    get:
+      operationId: listBuckets
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BucketInput'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createBucket
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketInput'
+          description: ''
+      tags:
+      - api
+  /api/v1/buckets/{id}/:
+    get:
+      operationId: retrieveBucket
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this bucket.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketInput'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateBucket
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this bucket.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketInput'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateBucket
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this bucket.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BucketInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketInput'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyBucket
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this bucket.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    BucketInput:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 250
+      required:
+      - name
